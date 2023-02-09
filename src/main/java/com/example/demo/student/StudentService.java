@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentService {
@@ -23,4 +24,12 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
+    public void addNewStudent(Student student) {
+        // If email already exists in the database, throw an exception,
+        Optional<Student> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
+        if (studentOptional.isPresent()) {
+            throw new IllegalStateException("Email taken.");
+        }
+        studentRepository.save(student);
+    }
 }
