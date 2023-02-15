@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-// This is the student data layer. Notice that the parent class, JpaRepository
+// This is the student data layer or the DAO (Data Access Object). Notice that the parent class, JpaRepository
 // already contains the basic CRUD methods for student table. Just give this class
 // the @Repository annotation and specify the entity/object type and id type and
 // Spring Boot does the rest.
