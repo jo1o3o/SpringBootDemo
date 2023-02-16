@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { StudentListComponent } from './component/student-list/student-list.component';
 import { StudentFormComponent } from './component/student-form/student-form.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,8 @@ import { StudentFormComponent } from './component/student-form/student-form.comp
   imports: [
     BrowserModule,
     RouterModule,
-    RouterModule.forRoot([])
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
