@@ -22,4 +22,4 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Run Client
 
-1. Open a command prompt and cd into the client direcetory. Run `ng serve --open` to run the angular application. Your browser should open and automatically navigate to `http://localhost:4200/`. If for some reason it doesn't, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. Open a command prompt and cd into the client directory. Run `ng serve --open` to run the angular application. Your browser should open and automatically navigate to `http://localhost:4200/`. If for some reason it doesn't, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
