@@ -23,5 +23,14 @@ export class StudentService {
     return this.http.post<Student>(this.studentsUrl, student);
   }
 
-  // TODO: add methods for updating and deleting students.
+  public delete(id : String) {
+    return this.http.delete<Student>(this.studentsUrl + "/" + id);
+  }
+
+  public update(student: Student) {
+    return this.http.put<Student>(
+      this.studentsUrl + "/" + student.id,
+      { params: { name: student.name, email: student.email } }
+    )
+  }
 }
