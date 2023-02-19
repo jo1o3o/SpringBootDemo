@@ -16,8 +16,7 @@ export class StudentListComponent {
     'id',
     'name',
     'email',
-    'edit',
-    'delete'
+    'actions'
   ];
 
   students: Student[];
@@ -28,6 +27,14 @@ export class StudentListComponent {
   constructor(private studentService: StudentService) { }
 
   ngOnInit() {
+    this.getStudents();
+  }
+
+  filterStudent(value: String): void {
+    // TODO: filter students list
+  }
+
+  getStudents() {
     this.studentService.findAll().subscribe(data => {
       this.students = data;
       this.dataSource = new MatTableDataSource(this.students);
@@ -36,15 +43,13 @@ export class StudentListComponent {
     })
   }
 
-  filterStudent(value: String): void {
-    // TODO: filter students list
-  }
-
   edit(student: Student): void {
     console.log("Edit button clicked.");
   }
 
   delete(id: String): void {
-    console.log("Delete button clicked.")
+    this.studentService.delete(id).subscribe(response => {
+      this.getStudents();
+    });
   }
 }
