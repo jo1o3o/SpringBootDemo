@@ -15,22 +15,23 @@ export class StudentService {
     this.studentUrl = "http://localhost:8080/api/v1/student";
   }
 
-  public findAll(): Observable<Student[]> {
+  public getAll(): Observable<Student[]> {
     return this.http.get<Student[]>(this.studentUrl);
   }
 
-  public save(student: Student) {
+  public getById(id: string): Observable<Student> {
+    return this.http.get<Student>(this.studentUrl + "/id");
+  }
+
+  public register(student: Student) {
     return this.http.post<Student>(this.studentUrl, student);
   }
 
-  public delete(id : String) {
+  public delete(id : string) {
     return this.http.delete(this.studentUrl + "/" + id);
   }
 
-  public update(student: Student) {
-    return this.http.put<Student>(
-      this.studentUrl + "/" + student.id,
-      { params: { name: student.name, email: student.email } }
-    )
+  public update(id: string, params: any) {
+    console.error("Update not yet implemented.");
   }
 }

@@ -5,7 +5,7 @@ import { StudentListComponent } from './component/student-list/student-list.comp
 import { StudentFormComponent } from './component/student-form/student-form.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule  } from '@angular/forms';
 import { StudentService } from './service/student.service';
 import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
@@ -27,7 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
+    ReactiveFormsModule ,
     MatButtonModule,
     MatIconModule,
     MatTableModule,

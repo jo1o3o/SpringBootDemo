@@ -35,7 +35,7 @@ export class StudentListComponent {
   }
 
   getStudents() {
-    this.studentService.findAll().subscribe(data => {
+    this.studentService.getAll().subscribe(data => {
       this.students = data;
       this.dataSource = new MatTableDataSource(this.students);
       this.dataSource.paginator = this.paginator;
@@ -47,7 +47,7 @@ export class StudentListComponent {
     console.log("Edit button clicked.");
   }
 
-  delete(id: String): void {
+  delete(id: string): void {
     this.studentService.delete(id).subscribe(response => {
       this.getStudents();
     });
