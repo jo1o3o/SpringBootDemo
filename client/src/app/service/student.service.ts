@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { Student } from 'src/app/model/student';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -27,11 +27,11 @@ export class StudentService {
     return this.http.post<Student>(this.studentUrl, student);
   }
 
-  public delete(id : string) {
+  public delete(id: string) {
     return this.http.delete(this.studentUrl + "/" + id);
   }
 
-  public update(id: string, params: any) {
-    return this.http.put<Student>(this.studentUrl + "/" + id, params);
+  public update(id: string, student: Student) {
+    return this.http.put<Student>(this.studentUrl + "/" + id, student);
   }
 }
