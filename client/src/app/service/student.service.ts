@@ -20,7 +20,7 @@ export class StudentService {
   }
 
   public getById(id: string): Observable<Student> {
-    return this.http.get<Student>(this.studentUrl + "/id");
+    return this.http.get<Student>(this.studentUrl + "/" + id);
   }
 
   public register(student: Student) {
@@ -32,6 +32,6 @@ export class StudentService {
   }
 
   public update(id: string, params: any) {
-    console.error("Update not yet implemented.");
+    return this.http.put<Student>(this.studentUrl + "/" + id, params);
   }
 }

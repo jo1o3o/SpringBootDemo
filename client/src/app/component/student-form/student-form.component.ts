@@ -45,8 +45,8 @@ export class StudentFormComponent implements OnInit {
       this.loading = true;
       this.studentService.getById(this.id)
         .pipe(first())
-        .subscribe(x => {
-          this.form.patchValue(x);
+        .subscribe(student => {
+          this.form.patchValue(student);
           this.loading = false;
         });
     }
@@ -65,8 +65,18 @@ export class StudentFormComponent implements OnInit {
 
     this.submitting = true;
 
-    this.saveStudent();
-    this.router.navigate(['/students']);
+    this.saveStudent()
+      .pipe(first())
+      .subscribe({
+        next: () => {
+          console.log("Student saved!");
+          this.router.navigateByUrl('/students');
+        },
+        error: error => {
+          console.log("Failed to save student: " + error);
+          this.submitting = false;
+        }
+      })
   }
 
   private saveStudent() {
