@@ -15,13 +15,18 @@ import { MatTooltipModule } from '@angular/material/tooltip'
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './component/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StudentListComponent,
-    StudentFormComponent
+    StudentFormComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatPaginatorModule,
     MatInputModule,
     MatProgressSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [StudentService],
   bootstrap: [AppComponent]
