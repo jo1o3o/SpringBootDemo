@@ -63,3 +63,10 @@ h6 {
     font-size: larger !important;
     font-weight: bold !important;
 }
+
+.mat-column-actions {
+    /* applies to display:table-cell */
+    text-align: right;
+    /* applies to display:flex */
+    justify-content: flex-end;
+}
