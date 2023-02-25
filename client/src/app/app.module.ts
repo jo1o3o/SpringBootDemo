@@ -18,8 +18,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './component/home/home.component';
+import { DarkModeService } from 'angular-dark-mode';
 
 @NgModule({
   declarations: [
@@ -45,9 +47,10 @@ import { HomeComponent } from './component/home/home.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatSlideToggleModule
   ],
-  providers: [StudentService],
+  providers: [StudentService, DarkModeService],
   bootstrap: [AppComponent]
 })
 
