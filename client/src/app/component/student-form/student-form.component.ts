@@ -38,10 +38,10 @@ export class StudentFormComponent implements OnInit {
       email: ['', Validators.required]
     });
 
-    this.title = "Add Student";
+    this.title = "Register Student";
     if (this.id) {
       // edit mode
-      this.title = "Edit Student";
+      this.title = "Update Student";
       this.loading = true;
       this.studentService.getById(this.id)
         .pipe(first())
@@ -53,7 +53,7 @@ export class StudentFormComponent implements OnInit {
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.form.controls; }
+  get formControls() { return this.form.controls; }
 
   onSubmit() {
     this.submitted = true;
