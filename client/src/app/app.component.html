@@ -6,7 +6,7 @@
   <span style="flex: 1 1 auto;"></span>
 	<span flex></span>
   <div>
-    <span style="font-size: 12px;">Dark Mode </span>
+    <span style="font-size: 12px;">{{ mode }} </span>
     <mat-slide-toggle 
       [checked]="darkMode$ | async"
       (change)="onToggle()"></mat-slide-toggle>
