@@ -9,7 +9,7 @@ import { StudentService } from 'src/app/service/student.service';
 @Component({
   selector: 'app-student-list',
   templateUrl: './student-list.component.html',
-  styleUrls: ['./student-list.component.css']
+  styleUrls: ['./student-list.component.scss']
 })
 export class StudentListComponent {
 
