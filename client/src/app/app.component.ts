@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { DarkModeService } from 'angular-dark-mode';
-import { Observable } from 'rxjs/internal/Observable';
+import { OverlayContainer } from '@angular/cdk/overlay';
+import { Component, HostBinding, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -10,20 +10,25 @@ import { Observable } from 'rxjs/internal/Observable';
 
 export class AppComponent implements OnInit {
 
-  title = "College Admissions";
-  opened = false;
-  darkMode$: Observable<boolean> = this.darkModeService.darkMode$;
-  mode: string;
+  public title = "College Admissions";
+  public opened = false;
+  public toggleControl = new FormControl(false);
+  @HostBinding('class') className = '';
 
-  constructor(private darkModeService: DarkModeService) { }
-  
+  constructor(private overlay: OverlayContainer) { }
+
   ngOnInit(): void {
-    this.darkMode$.subscribe(darkMode => {
-      darkMode ? this.mode = "Dark Mode" : this.mode = "Light Mode"; 
-    });
-  }
+    this.toggleControl.valueChanges.subscribe((darkMode) => {
+      const darkClassName = 'darkMode';
+      this.className = darkMode ? darkClassName : '';
 
-  onToggle(): void {
-    this.darkModeService.toggle();
+      // Some Angular Material components such as dialogs and floating menus are rendered
+      // in an overlay container, instead of root component.
+      if (darkMode) {
+        this.overlay.getContainerElement().classList.add(darkClassName);
+      } else {
+        this.overlay.getContainerElement().classList.remove(darkClassName);
+      }
+    });
   }
 }

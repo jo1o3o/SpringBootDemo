@@ -4,12 +4,10 @@
   </button>
   {{ title }}
   <span style="flex: 1 1 auto;"></span>
-	<span flex></span>
+  <span flex></span>
   <div>
-    <span style="font-size: 12px;">{{ mode }} </span>
-    <mat-slide-toggle 
-      [checked]="darkMode$ | async"
-      (change)="onToggle()"></mat-slide-toggle>
+    <span style="font-size: 12px;"><mat-icon>dark_mode</mat-icon> </span>
+    <mat-slide-toggle [formControl]="toggleControl" class="mr-8"></mat-slide-toggle>
   </div>
 </mat-toolbar>
 <mat-sidenav-container>
