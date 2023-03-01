@@ -12,20 +12,44 @@ export class AppComponent implements OnInit {
 
   public title = "College Admissions";
   public opened = false;
-   // TODO: value should be set from local storage (or cache).
-  public toggleControl = new FormControl(false);
+  public toggleFormControl = new FormControl(false);
   @HostBinding('class') className = '';
 
   constructor(private overlay: OverlayContainer) { }
 
   ngOnInit(): void {
-    this.toggleControl.valueChanges.subscribe((darkMode) => {
+    const theme = localStorage.getItem('theme');
+    if (theme) {
+      // theme exists in local storage
+      if (theme == "light") {
+        this.className = '';
+        this.toggleFormControl.setValue(false);
+      } else if (theme == 'dark') {
+        this.className = 'dark-theme';
+        this.toggleFormControl.setValue(true);
+      }
+    } else {
+      // theme doesn't exist in local storage
+      // default to light theme
+      this.className = '';
+      localStorage.setItem('theme', 'light');
+      this.toggleFormControl.setValue(false);
+    }
+
+    this.toggleFormControl.valueChanges.subscribe((isDarkMode) => {
       const darkClassName = 'dark-theme';
-      this.className = darkMode ? darkClassName : '';
+      this.className = isDarkMode ? darkClassName : '';
+
+      // save to local storage
+      if (isDarkMode) {
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
+      }
 
       // Some Angular Material components such as dialogs and floating menus are rendered
       // in an overlay container, instead of root component.
-      if (darkMode) {
+      if (isDarkMode) {
         this.overlay.getContainerElement().classList.add(darkClassName);
       } else {
         this.overlay.getContainerElement().classList.remove(darkClassName);
