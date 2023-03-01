@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
 
   public title = "College Admissions";
   public opened = false;
+   // TODO: value should be set from local storage (or cache).
   public toggleControl = new FormControl(false);
   @HostBinding('class') className = '';
 
@@ -19,7 +20,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.toggleControl.valueChanges.subscribe((darkMode) => {
-      const darkClassName = 'darkMode';
+      const darkClassName = 'dark-theme';
       this.className = darkMode ? darkClassName : '';
 
       // Some Angular Material components such as dialogs and floating menus are rendered

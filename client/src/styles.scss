@@ -11,22 +11,10 @@ $dark-app-theme: mat.define-dark-theme((color: (primary: mat.define-palette(mat.
                 warn: mat.define-palette(mat.$amber-palette),
             )));
 
-// @mixin body-theme($theme) {
-//     $background-palette: map-get($theme, background);
-//     $app-background-color: mat-color($background-palette, background);
-
-//     body {
-//         background-color: $app-background-color;
-//     }
-// }
-
-//@include angular-material-theme($light-app-theme);
 @include mat.all-component-themes($light-app-theme);
-// @include body-theme($light-app-theme);
 
-.darkMode {
+.dark-theme {
     @include mat.all-component-themes($dark-app-theme);
-    // @include body-theme($dark-app-theme);
 }
 
 /* Angular Material Prebuilt Themes */
