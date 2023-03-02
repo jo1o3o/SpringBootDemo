@@ -1,0 +1,8 @@
+Todos:
+- Confirm before deleting student.
+- Implement alert service for alerting users when adding or updating student fails (or any other operations).
+- Implement dark theme. - DONE
+- Filter table.
+
+Bugs:
+- Fix issue with background color not changing when switching to dark theme.
