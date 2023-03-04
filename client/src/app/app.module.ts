@@ -5,7 +5,7 @@ import { StudentListComponent } from './component/student-list/student-list.comp
 import { StudentFormComponent } from './component/student-form/student-form.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule  } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { StudentService } from './service/student.service';
 import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
@@ -22,19 +22,22 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './component/home/home.component';
 import { DarkModeService } from 'angular-dark-mode';
+import { ConfirmationDialogComponent } from './component/confirmation-dialog/confirmation-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     StudentListComponent,
     StudentFormComponent,
-    HomeComponent
+    HomeComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule ,
+    ReactiveFormsModule,
     MatButtonModule,
     MatIconModule,
     MatTableModule,
@@ -48,10 +51,11 @@ import { DarkModeService } from 'angular-dark-mode';
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatDialogModule
   ],
   providers: [StudentService, DarkModeService],
   bootstrap: [AppComponent]
 })
 
-export class AppModule {}
+export class AppModule { }

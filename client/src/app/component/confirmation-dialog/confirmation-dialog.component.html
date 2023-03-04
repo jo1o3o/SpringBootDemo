@@ -1,0 +1,9 @@
+<div style="padding: 5px;">
+    <mat-dialog-content>
+        <p class="student-delete-confirm-message">{{message}}</p>
+    </mat-dialog-content>
+    <mat-dialog-actions align="center">
+        <button mat-raised-button color="primary" (click)="onConfirmClick()" tabindex="1">{{confirmButtonText}}</button>
+        <button mat-raised-button mat-dialog-close tabindex="-1">{{cancelButtonText}}</button>
+    </mat-dialog-actions>
+</div>

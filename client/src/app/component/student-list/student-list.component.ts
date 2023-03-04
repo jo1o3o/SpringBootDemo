@@ -1,10 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Student } from 'src/app/model/student';
 import { StudentService } from 'src/app/service/student.service';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-student-list',
@@ -27,7 +29,8 @@ export class StudentListComponent {
 
   constructor(
     private studentService: StudentService,
-    private router: Router) { }
+    private router: Router,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getStudents();
@@ -50,7 +53,21 @@ export class StudentListComponent {
     this.router.navigate(['/editStudent', id]);
   }
 
-  delete(id: string): void {
+  delete(student: Student): void {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: {
+        message: "Are you sure you want to delete the following student?\n\n" + student.name
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        this.deleteStudent(student.id);
+      }
+    });
+  }
+
+  deleteStudent(id: string) {
     this.studentService.delete(id).subscribe(response => {
       this.getStudents();
     });
