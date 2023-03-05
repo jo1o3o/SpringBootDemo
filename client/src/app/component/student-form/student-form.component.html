@@ -1,41 +1,39 @@
-<h1>{{title}}</h1>
-<form *ngIf="!loading" [formGroup]="form" (ngSubmit)="onSubmit()">
-
-    <div class="row">
-
-        <!-- Name Field -->
-        <div class="mb-3 col">
-            <label class="form-label">Name</label>
-            <input type="text" formControlName="name" class="form-control"
-                [ngClass]="{ 'is-invalid': submitted && formControls.name.errors }" />
-            <div *ngIf="submitted && formControls.name.errors" class="invalid-feedback">
-                <div *ngIf="formControls.name.errors?.['required']">Name is required</div>
+<div class="center">
+    <h1>{{title}}</h1>
+    <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="onSubmit()">
+    
+            <!-- Name Field -->
+            <div class="form-group">
+                <label class="form-label">Name</label>
+                <input type="text" formControlName="name" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && formControls.name.errors }" />
+                <div *ngIf="submitted && formControls.name.errors" class="invalid-feedback">
+                    <div *ngIf="formControls.name.errors?.['required']">Name is required</div>
+                </div>
             </div>
-        </div>
-
-        <!-- Email Field -->
-        <div class="mb-3 col">
-            <label class="form-label">Email</label>
-            <input type="text" formControlName="email" class="form-control"
-                [ngClass]="{ 'is-invalid': submitted && formControls.email.errors }" />
-            <div *ngIf="submitted && formControls.email.errors" class="invalid-feedback">
-                <div *ngIf="formControls.email.errors?.['required']">Email is required</div>
+    
+            <!-- Email Field -->
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="text" formControlName="email" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && formControls.email.errors }" />
+                <div *ngIf="submitted && formControls.email.errors" class="invalid-feedback">
+                    <div *ngIf="formControls.email.errors?.['required']">Email is required</div>
+                </div>
             </div>
+    
+        <!-- Submit Button -->
+        <div>
+            <button [disabled]="submitting" mat-flat-button color="primary" class="form-button">
+                <span *ngIf="submitting" class="spinner-border spinner-border-sm me-1"></span>
+                Save
+            </button>
+            <a mat-flat-button routerLink="/students" class="form-button">Cancel</a>
         </div>
-
+    
+    </form>
+    
+    <div *ngIf="loading" class="text-center m-5">
+        <span class="spinner-border spinner-border-lg align-center"></span>
     </div>
-
-    <!-- Submit Button -->
-    <div class="mb-3">
-        <button [disabled]="submitting" class="btn btn-primary">
-            <span *ngIf="submitting" class="spinner-border spinner-border-sm me-1"></span>
-            Save
-        </button>
-        <a routerLink="/students" class="btn btn-link">Cancel</a>
-    </div>
-
-</form>
-
-<div *ngIf="loading" class="text-center m-5">
-    <span class="spinner-border spinner-border-lg align-center"></span>
 </div>
