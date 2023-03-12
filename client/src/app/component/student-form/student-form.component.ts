@@ -12,22 +12,16 @@ import { first } from 'rxjs/operators';
 })
 export class StudentFormComponent implements OnInit {
 
-  student: Student;
-
   form!: FormGroup;
   id?: string;
   title!: string;
-  loading = false;
-  submitting = false;
   submitted = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private studentService: StudentService) {
-    this.student = new Student();
-  }
+    private studentService: StudentService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -35,19 +29,17 @@ export class StudentFormComponent implements OnInit {
     // build student form
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
-      email: ['', Validators.required]
+      email: ['', [Validators.required, Validators.email]]
     });
 
     this.title = "Register Student";
     if (this.id) {
       // edit mode
       this.title = "Update Student";
-      this.loading = true;
       this.studentService.getById(this.id)
         .pipe(first())
         .subscribe(student => {
           this.form.patchValue(student);
-          this.loading = false;
         });
     }
   }
@@ -63,8 +55,6 @@ export class StudentFormComponent implements OnInit {
       return;
     }
 
-    this.submitting = true;
-
     this.saveStudent()
       .pipe(first())
       .subscribe({
@@ -74,7 +64,6 @@ export class StudentFormComponent implements OnInit {
         },
         error: error => {
           console.log("Failed to save student: " + error);
-          this.submitting = false;
         }
       })
   }
