@@ -1,16 +1,27 @@
 <div class="example-container mat-elevation-z8">
 
-  <mat-table #table [dataSource]="dataSource" matSort>
+  <mat-form-field>
+    <input matInput
+           (keyup)="applyFilter($event)"
+           placeholder="Search students"
+           #input>
+  </mat-form-field>
+
+  <mat-table #table
+             [dataSource]="dataSource"
+             matSort>
 
     <!-- ID Column-->
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef
+                       mat-sort-header> ID </mat-header-cell>
       <mat-cell *matCellDef="let student"> {{student.id}} </mat-cell>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
+      <mat-header-cell *matHeaderCellDef
+                       mat-sort-header>
         Name
       </mat-header-cell>
       <mat-cell *matCellDef="let student"> {{student.name}} </mat-cell>
@@ -18,7 +29,8 @@
 
     <!-- Email Column -->
     <ng-container matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
+      <mat-header-cell *matHeaderCellDef
+                       mat-sort-header>
         Email
       </mat-header-cell>
       <mat-cell *matCellDef="let student">
@@ -30,14 +42,22 @@
 
     <!-- Actions Column -->
     <ng-container matColumnDef="actions">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
+      <mat-header-cell *matHeaderCellDef
+                       mat-sort-header>
       </mat-header-cell>
       <mat-cell *matCellDef="let student">
-        <button mat-icon-button matTooltip="Click to Edit" class="iconbutton" color="accent" (click)="edit(student.id)">
+        <button mat-icon-button
+                matTooltip="Click to Edit"
+                class="iconbutton"
+                color="accent"
+                (click)="edit(student.id)">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" color="warn"
-          (click)="delete(student)">
+        <button mat-icon-button
+                matTooltip="Click to Delete"
+                class="iconbutton"
+                color="warn"
+                (click)="delete(student)">
           <mat-icon>delete</mat-icon>
         </button>
       </mat-cell>
@@ -47,5 +67,6 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons></mat-paginator>
 </div>

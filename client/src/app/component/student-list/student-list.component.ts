@@ -22,7 +22,6 @@ export class StudentListComponent {
     'actions'
   ];
 
-  students: Student[];
   dataSource: MatTableDataSource<Student>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort, {}) sort: MatSort;
@@ -36,14 +35,14 @@ export class StudentListComponent {
     this.getStudents();
   }
 
-  filterStudent(value: String): void {
-    // TODO: filter students list
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   getStudents() {
     this.studentService.getAll().subscribe(data => {
-      this.students = data;
-      this.dataSource = new MatTableDataSource(this.students);
+      this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     })
