@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Student } from 'src/app/model/student';
 import { StudentService } from 'src/app/service/student.service';
 import { first } from 'rxjs/operators';
 
