@@ -21,7 +21,6 @@ import { MatListModule } from '@angular/material/list';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './component/home/home.component';
-import { DarkModeService } from 'angular-dark-mode';
 import { ConfirmationDialogComponent } from './component/confirmation-dialog/confirmation-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
@@ -54,7 +53,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSlideToggleModule,
     MatDialogModule
   ],
-  providers: [StudentService, DarkModeService],
+  providers: [StudentService],
   bootstrap: [AppComponent]
 })
 
