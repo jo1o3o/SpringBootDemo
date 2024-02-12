@@ -1,4 +1,4 @@
-package com.example.demo.student;
+package com.spring.boot.demo.student;
 
 // This is the student service layer. Use the service layer for any business logic.
 

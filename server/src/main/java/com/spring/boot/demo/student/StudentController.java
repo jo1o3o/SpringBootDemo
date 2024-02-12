@@ -1,4 +1,4 @@
-package com.example.demo.student;
+package com.spring.boot.demo.student;
 
 // This is the API layer, that serves as the student REST API.
 
