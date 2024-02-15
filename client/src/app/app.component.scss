@@ -14,3 +14,20 @@ mat-list {
 mat-sidenav-content {
   margin: 20px
 }
+
+// form style - start
+.center {
+  margin: auto;
+  width: 50%;
+  border: 1px solid #495057;
+  padding: 15px;
+}
+
+.form-button {
+  margin: 2px;
+}
+
+.form-error {
+  margin-top: 3px;
+}
+// form style - end
