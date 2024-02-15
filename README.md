@@ -36,3 +36,11 @@ Run `ng serve --open` to run the application. Your browser should open and navig
 ## Test Client
 
 Run `ng test` to test the application.
+
+# Usage Instructions
+
+## Login
+
+You are required to login to use the application. To login as user, creditial is user/password.
+
+You are required to login as admin user to register new student, update student, and delete student. To login as admin, credential is admin/password.
