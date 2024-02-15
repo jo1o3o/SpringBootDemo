@@ -2,6 +2,7 @@ package com.spring.boot.demo.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -24,6 +25,9 @@ public class SecurityConfig {
                 .cors()
                 .and()
                 .authorizeHttpRequests((requests) -> requests
+                        .requestMatchers(HttpMethod.DELETE, "/students/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/students/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/students/**").hasRole("ADMIN")
                         .requestMatchers("/students/**").hasRole("USER")
                         .requestMatchers("index.html", "/").permitAll()
                         .anyRequest().authenticated()
@@ -42,7 +46,14 @@ public class SecurityConfig {
                         .roles("USER")
                         .build();
 
-        return new InMemoryUserDetailsManager(user);
+        UserDetails admin =
+                User.withDefaultPasswordEncoder()
+                        .username("admin")
+                        .password("password")
+                        .roles("USER", "ADMIN")
+                        .build();
+
+        return new InMemoryUserDetailsManager(user, admin);
     }
 
 }
