@@ -20,7 +20,7 @@ export class StudentFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private studentService: StudentService) { }
+    private studentService: StudentService) {}
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];

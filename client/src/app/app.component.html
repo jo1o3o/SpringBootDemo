@@ -17,8 +17,10 @@
                mode="side">
     <mat-list (click)="opened=false">
       <mat-list-item><a routerLink="/">Home</a></mat-list-item>
-      <mat-list-item><a routerLink="/students">View Students</a></mat-list-item>
-      <mat-list-item><a routerLink="/addStudent">Register Student</a></mat-list-item>
+      <mat-list-item [hidden]="!authenticated()"><a routerLink="/students">View Students</a></mat-list-item>
+      <mat-list-item [hidden]="!authenticated()"><a routerLink="/addStudent">Register Student</a></mat-list-item>
+      <mat-list-item [hidden]="authenticated()"><a routerLink="/login">Login</a></mat-list-item>
+      <mat-list-item [hidden]="!authenticated()"><a (click)="logout()">Logout</a></mat-list-item>
     </mat-list>
   </mat-sidenav>
   <mat-sidenav-content>

@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * @author Jin Oh
+ */
+
 @RestController
 @RequestMapping(path = "students")
 @CrossOrigin(origins = "http://localhost:4200")

@@ -1,6 +1,9 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { UserService } from './service/user.service';
+import { HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +18,13 @@ export class AppComponent implements OnInit {
   public toggleFormControl = new FormControl(false);
   @HostBinding('class') className = '';
 
-  constructor(private overlay: OverlayContainer) { }
+  constructor(
+    private overlay: OverlayContainer, 
+    private userService: UserService,
+    private router: Router) {
+    // check to see if user is already authenticated (e.g., user refreshed the browser in the middle of session)
+    userService.authenticate(undefined, undefined);
+  }
 
   ngOnInit(): void {
     const theme = localStorage.getItem('theme');
@@ -55,5 +64,16 @@ export class AppComponent implements OnInit {
         this.overlay.getContainerElement().classList.remove(darkClassName);
       }
     });
+  }
+
+  logout() {
+    // reset authenticated and http headers
+    this.userService.authenticated = false;
+    this.userService.headers = new HttpHeaders();
+    this.router.navigateByUrl('/');
+  }
+
+  authenticated() {
+    return this.userService.authenticated;
   }
 }
